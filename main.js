@@ -23,13 +23,12 @@ function gradeConverter(grade){
                 console.log("Grade Not Found");
     }
 }
-numberOfCourses=5;
-const courses=[{courseName:"Calculus",courseGrade:"A+",couseCredit:1},{courseName:"Calculus",courseGrade:"A+",couseCredit:1},{courseName:"Statistics",courseGrade:"A+",couseCredit:1},{courseName:"Discrete Structutes and theory",courseGrade:"A+",couseCredit:1},{courseName:"Economics",courseGrade:"A+",couseCredit:1},{courseName:"Leadership",courseGrade:"B+",couseCredit:0.5}];
+const courses=[{courseName:"Calculus",courseGrade:"A+",courseCredit:1},{courseName:"Calculus",courseGrade:"A+",courseCredit:1},{courseName:"Statistics",courseGrade:"A+",courseCredit:1},{courseName:"Discrete Structutes and theory",courseGrade:"A+",courseCredit:1},{courseName:"Economics",courseGrade:"A+",courseCredit:1},{courseName:"Leadership",courseGrade:"B+",courseCredit:0.5}];
 let gradePoints=0;
 let totalCredits=0;
 for(let i=0;i<courses.length;i++){
-    gradePoints+=gradeConverter(courses[i].courseGrade)*courses[i].couseCredit;
-    totalCredits+=courses[i].couseCredit;
+    gradePoints+=gradeConverter(courses[i].courseGrade)*courses[i].courseCredit;
+    totalCredits+=courses[i].courseCredit;
 }
 
 
