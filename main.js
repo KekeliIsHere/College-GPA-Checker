@@ -24,14 +24,14 @@ function gradeConverter(grade){
     }
 }
 numberOfCourses=5;
-courseName=["Calculus","Statistics","Discrete structures and theory","Economics","Leadership"];
-courseGrade=["A","A+","A+","A+","B+"];
-courseCredits=[1,1,1,1,0.5];
+const courses=[{courseName:"Calculus",courseGrade:"A+",couseCredit:1},{courseName:"Calculus",courseGrade:"A+",couseCredit:1},{courseName:"Statistics",courseGrade:"A+",couseCredit:1},{courseName:"Discrete Structutes and theory",courseGrade:"A+",couseCredit:1},{courseName:"Economics",courseGrade:"A+",couseCredit:1},{courseName:"Leadership",courseGrade:"B+",couseCredit:0.5}];
 let gradePoints=0;
-let creditHours=0;
-for(let i=0;i<numberOfCourses;i++){
-    creditHours+=courseCredits[i];
-    gradePoints+=gradeConverter(courseGrade[i])*courseCredits[i];
+let totalCredits=0;
+for(let i=0;i<courses.length;i++){
+    gradePoints+=gradeConverter(courses[i].courseGrade)*courses[i].couseCredit;
+    totalCredits+=courses[i].couseCredit;
 }
-gpa=gradePoints/creditHours;
+
+
+gpa=gradePoints/totalCredits;
 console.log(gpa);
