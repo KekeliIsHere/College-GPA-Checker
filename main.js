@@ -87,6 +87,5 @@ function calculateGPA(){
     gpa=gradePoints/totalCredits;
     //The two fixed is for precision and to keep it professional
     document.getElementById("gpa").innerHTML="<h5>GPA: </h5>"+gpa.toFixed(2);
-
 }
 
