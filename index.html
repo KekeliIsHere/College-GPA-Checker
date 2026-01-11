@@ -4,7 +4,7 @@
     <title>GPA Checker</title>
 </head>
 <body>
-    <script src="main.js"></script>
+    
     
     <label for="courseName">Course Name:</label>
     <input type="text" id="courseName" name="courseName" placeholder="Course Name">
@@ -22,15 +22,20 @@
         <option value="C">C</option>
         <option value="E">E</option>
         </select>
-        <button onclick="addCourse()">Add Course</button> 
+        <button id="addCourseButton">Add Course</button> 
     <br><br>
-    <button onclick="renderCourses()">Render Courses</button>
+    <button id="renderCoursesButton">Render Courses</button>
     <br><br>
-    <button onclick="calculateGPA()">Calculate GPA</button>
+    <button id="calculateGPAButton">Calculate GPA</button>
     <div id="courseDetails"></div>
     <br><br>
     <div id="gpa"></div>
     <br><br>
+    <button id="deleteCourseButton">Delete Course</button>
+    <div id="deleteCourse"></div>
+    <br><br>
+    
+    <script src="main.js"></script>
 </body>   
     
 </html>

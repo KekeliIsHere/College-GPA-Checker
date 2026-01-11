@@ -1,5 +1,5 @@
 const courses=[];
-// const courseDetails=document.getElementById('courseDetails');
+
 //Put this function so that it easily coverts the grade from the dropdown box into the number representation.
 function gradeConverter(grade){
     switch (grade){
@@ -21,6 +21,8 @@ function gradeConverter(grade){
             case "D":
                 return 1;
             case "E":
+                return 0;
+            default:
                 return 0;
             
     }
@@ -46,6 +48,7 @@ function addCourse(){
     //This pushes them into the courses array. The console.log was to help me see that it was working,
     courses.push(course)
     console.log("Course Added")
+    updateUI();
     //Now this is pretty helpful it helps me see that the course objects are being added to the array
     console.log(courses)
     //This clears the input fields and makes the value in the dropdown value the default
@@ -88,4 +91,52 @@ function calculateGPA(){
     //The two fixed is for precision and to keep it professional
     document.getElementById("gpa").innerHTML="<h5>GPA: </h5>"+gpa.toFixed(2);
 }
+//Added this so that it automatically updates courses
+function updateUI() {
+    renderCourses();
+    calculateGPA();
+}
 
+//This creates the delete input element and add the button
+function deleteCourse(){
+    if (courses.length==0){
+        alert("There are no courses to be deleted");
+        return;        
+    }
+    document.getElementById('deleteCourse').innerHTML=`
+        <br><br>
+        <p>What course do you want to delete?</p>
+        <br>
+        <input type="text" id="courseDelete" name="courseDelete">
+        <button id="courseDeleteButton">Delete</button>
+        `;
+    const courseDeleteButton=document.getElementById("courseDeleteButton");
+    courseDeleteButton.addEventListener("click",deleter);
+    
+
+}
+//Couldn't come up with another name but this funciton is can only be triggered after the deleteCourse is used.
+function deleter(){
+    //Takes in the value from the newly created input
+    const deleteCourse=document.getElementById('courseDelete').value;
+    //A lop to go through the courses loop and see if anything matches the deleteCourse value
+    for(let i=0;i<courses.length;i++){
+        if(courses[i].courseName==deleteCourse){
+            courses.splice(i,1);
+            updateUI();
+            console.log(courses);
+            alert("Course deleted succefully");
+            return;
+        }        
+    }
+    alert("Course not found.")    
+}
+//All these enable the code to work well with react. So yeah I replaced the button onclick with these.
+const addCourseButton=document.getElementById("addCourseButton");
+addCourseButton.addEventListener("click",addCourse);
+const renderCoursesButton=document.getElementById("renderCoursesButton");
+renderCoursesButton.addEventListener("click",renderCourses);
+const calculateGPAButton=document.getElementById("calculateGPAButton");
+calculateGPAButton.addEventListener("click",calculateGPA);
+const deleteCourseButton=document.getElementById("deleteCourseButton");
+deleteCourseButton.addEventListener("click",deleteCourse);
