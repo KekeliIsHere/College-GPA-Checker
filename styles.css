@@ -1,4 +1,4 @@
-/* Make every element use border-box sizing */
+
 *,
 *::before,
 *::after {
@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-/* Body styling */
+/* Body styling*/
 body {
   background-color: #2D3748;
   font-family: system-ui, sans-serif;
@@ -18,7 +18,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; /* start stacking from top */
-  padding: 2rem 1rem;
+  padding: 1rem;
+  padding-bottom: 10rem;
 }
 
 /* Header styling */
@@ -27,11 +28,12 @@ header {
   display: flex;
   justify-content: space-between; /* center logos horizontally */
   
+  
   margin-bottom: 2rem;
 }
 
 header .logo img {
-  width: 40px;   /* fixed size for logos */
+  width: clamp(30px, 6vw, 50px);   /* responsive size */
   height: auto;  /* keep aspect ratio */
 }
 
@@ -39,20 +41,25 @@ header .logo img {
 #main {
   background-color: #3b465a;
   color: white;
-  padding: 2rem;
+  padding: clamp(1rem, 5vw, 2rem);
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  
   border-radius: 8px;
 
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* space between inputs/buttons */
+  flex-grow: 1; 
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(0.75rem, 3vw, 1.5rem); /* responsive gap */
 }
 
 /* Headings inside main */
 h1 {
   text-align: center;
   margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
 }
 
 /* Inputs, selects, buttons styling */
@@ -60,11 +67,12 @@ input,
 select,
 button {
   width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: clamp(0.5rem, 3vw, 0.75rem);
+  font-size: clamp(0.9rem, 4vw, 1rem);
   border-radius: 4px;
   border: 1px solid #ccc;
   outline: none;
+  
 }
 
 /* Button hover effect (optional but nice) */
@@ -75,12 +83,36 @@ button:hover {
 }
 
 /* Footer styling */
-footer {
+footer {  
   width: 100%;
   display: flex;
   justify-content: center; /* center content horizontally */
-  padding: 1rem 0;
+  padding: 1rem;
   background-color: #3b465a;
   color: white;
   margin-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+footer p {
+  font-size: clamp(0.75rem, 3vw, 1rem);
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 0.75rem;
+    padding-bottom: 9rem;
+  }
+  
+  #main {
+    padding: clamp(1rem, 4vw, 1.5rem);
+    gap: clamp(0.5rem, 2.5vw, 1rem);
+  }
+  
+  header .logo img {
+    width: clamp(25px, 5vw, 40px);
+  }
 }
