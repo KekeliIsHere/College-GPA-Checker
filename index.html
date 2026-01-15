@@ -8,14 +8,32 @@
 </head>
 <body>
     <header>
-        
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-btn">Dashboard</a>
+            <a href="index.html" class="nav-btn active">General GPA</a>
+            <a href="ashesi-gpa.html" class="nav-btn">ASHESI GPA</a>
+        </div>
     </header>  
-    <h1>GPA Calculator </h1>
+    <h1>Semester GPA Calculator </h1>
     <div id="main">
         <label for="courseName">Course Name:</label>
         <input type="text" id="courseName" name="courseName" placeholder="Course Name">
-        <label for="courseCredits">Course Credits:</label>
-        <input type="number" id="courseCredits" name="courseCredits" placeholder="Course Credits">
+        <label for="courseCredits">Course Credits (0.5-6):</label>
+        <select id="courseCredits" name="courseCredits">
+            <option value="" disabled selected>-- Select Credits --</option>
+            <option value="0.5">0.5</option>
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3</option>
+            <option value="3.5">3.5</option>
+            <option value="4">4</option>
+            <option value="4.5">4.5</option>
+            <option value="5">5</option>
+            <option value="5.5">5.5</option>
+            <option value="6">6</option>
+        </select>
         <label for="grade">Grade</label>
         <select id="grade" name="grade">
             <option value="" disabled selected>-- Select a Grade --</option>
@@ -36,12 +54,13 @@
         
         <div id="gpa"></div>
     </div>
+    <p>CGPA coming soon.</p>
     <footer>
         <a href="https://github.com/KekeliIsHere" class="logo" target="_blank">
             <img src="logos/github-mark-white.png">
         </a>        
         <p>@2026 KekeliIsHere</p>
-        <a href="https://www.linkedin.com/in/kekeli-agblobi/" class="logo" target="_blank">>
+        <a href="https://www.linkedin.com/in/kekeli-agblobi/" class="logo" target="_blank">
             <img src="logos/InBug-White.png" >
         </a>
     </footer>

@@ -33,12 +33,13 @@ function addCourse(){
     const course={}
     const courseName=document.getElementById('courseName').value;
     const courseCredit=document.getElementById('courseCredits').value;
-        //I had to parse this to an integer cause the value is always a String. 
-    const credit=parseInt(courseCredit)
+        //Parse this as a float now since ASHESI has 0.5 courses. 
+    const credit=parseFloat(courseCredit)
     const grade=document.getElementById('grade').value;
     //If there is no Course name, Empty Credits, Or a null grade It sends an alert
-    if (!courseName || isNaN(credit) || grade=='') {
-        alert("Invalid input");
+    //Also validate that credits are between 0.5-6 (ASHESI range)
+    if (!courseName || isNaN(credit) || credit < 0.5 || credit > 6 || grade=='') {
+        alert("Invalid input. Credits must be between 0.5 and 6");
         return;
     }
     //Setting them into the course object.
@@ -53,7 +54,7 @@ function addCourse(){
     console.log(courses)
     //This clears the input fields and makes the value in the dropdown value the default
     document.getElementById('courseName').value='';
-    document.getElementById('courseCredits').value='';
+    document.getElementById('courseCredits').selectedIndex=0;
     document.getElementById('grade').selectedIndex=0;
 }
 //This displays the courses in the in the div with the Course Details ID.
@@ -104,8 +105,22 @@ function calculateGPA(){
     //More simple stuff.
     gpa=gradePoints/totalCredits;
     //The two fixed is for precision and to keep it professional
-    document.getElementById("gpa").innerHTML="<h5>GPA: </h5>"+gpa.toFixed(2);
+    const honors = getHonorsCategory(gpa);
+    let honorsHTML = honors ? `<p style="color: #48bb78; margin-top: 0.5rem; font-weight: bold;">${honors}</p>` : '';
+    document.getElementById("gpa").innerHTML="<h5>GPA: </h5>"+gpa.toFixed(2) + honorsHTML;
 }
+//Function to determine honors category
+function getHonorsCategory(gpa) {
+    if (gpa >= 3.85) {
+        return "🏆 Summa Cum Laude (Highest Honors)";
+    } else if (gpa >= 3.70) {
+        return "🥈 Magna Cum Laude (High Honors)";
+    } else if (gpa >= 3.5) {
+        return "🥉 Cum Laude (Honors)";
+    }
+    return "";
+}
+
 //Added this so that it automatically updates courses
 function updateUI() {
     renderCourses();
