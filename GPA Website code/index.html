@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPA Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="https://github.com/KekeliIsHere" class="logo">
+            <img src="/GPA Website code/logos/github-mark-white.png">
+        </a>
+        <a href="https://www.linkedin.com/in/kekeli-agblobi/" class="logo">
+            <img src="/GPA Website code/logos/InBug-White.png" >
+        </a>
+    </header>  
+    <h1>GPA Calculator </h1>
+    <div id="main">
+        <label for="courseName">Course Name:</label>
+        <input type="text" id="courseName" name="courseName" placeholder="Course Name">
+        <label for="courseCredits">Course Credits:</label>
+        <input type="number" id="courseCredits" name="courseCredits" placeholder="Course Credits">
+        <label for="grade">Grade</label>
+        <select id="grade" name="grade">
+            <option value="" disabled selected>-- Select a Grade --</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="E">E</option>
+        </select>
+        
+        <button id="addCourseButton">Add Course</button> 
+        
+        <button id="renderCoursesButton">Render Courses</button>
+        
+        <button id="calculateGPAButton">Calculate GPA</button>
+        
+        <div id="gpa"></div>
+        
+        <button id="deleteCourseButton">Delete Course</button>
+        <div id="deleteCourse"></div>
+        
+        <div id="courseDetails"></div>
+    </div>
+    <footer>
+        <p>@2026 KekeliIsHere</p>
+    </footer>
+    <script src="main.js"></script>
+</body>   
+    
+</html>
