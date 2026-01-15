@@ -62,13 +62,28 @@ function renderCourses(){
     let courseDetails='';
     for(let i=0;i<courses.length;i++){
         courseDetails+=`
-            Course Name: ${courses[i].courseName} <br>
-            Course Credits: ${courses[i].courseCredit}<br>
-            Course Grade: ${courses[i].courseGrade} <br><br>
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: #2D3748; padding: 1rem; border-radius: 4px; margin: 0.5rem 0;">
+                <div>
+                    Course Name: ${courses[i].courseName} <br>
+                    Course Credits: ${courses[i].courseCredit}<br>
+                    Course Grade: ${courses[i].courseGrade}
+                </div>
+                <button class="deleteBtn" data-index="${i}" style="padding: 0.5rem 1rem; background: #e53e3e; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
+            </div>
             `        
     }
     //This adds everything to the div
     document.getElementById('courseDetails').innerHTML=courseDetails;
+    
+    //Add event listeners to all delete buttons
+    const deleteButtons=document.querySelectorAll('.deleteBtn');
+    deleteButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index=this.getAttribute('data-index');
+            courses.splice(index, 1);
+            updateUI();
+        });
+    });
 }
 //Now this handles the GPA calculation. So yeah basic stuff
 function calculateGPA(){
@@ -97,40 +112,6 @@ function updateUI() {
     calculateGPA();
 }
 
-//This creates the delete input element and add the button
-function deleteCourse(){
-    if (courses.length==0){
-        alert("There are no courses to be deleted");
-        return;        
-    }
-    document.getElementById('deleteCourse').innerHTML=`
-        <br><br>
-        <p>What course do you want to delete?</p>
-        <br>
-        <input type="text" id="courseDelete" name="courseDelete">
-        <button id="courseDeleteButton">Delete</button>
-        `;
-    const courseDeleteButton=document.getElementById("courseDeleteButton");
-    courseDeleteButton.addEventListener("click",deleter);
-    
-
-}
-//Couldn't come up with another name but this funciton is can only be triggered after the deleteCourse is used.
-function deleter(){
-    //Takes in the value from the newly created input
-    const deleteCourse=document.getElementById('courseDelete').value;
-    //A lop to go through the courses loop and see if anything matches the deleteCourse value
-    for(let i=0;i<courses.length;i++){
-        if(courses[i].courseName==deleteCourse){
-            courses.splice(i,1);
-            updateUI();
-            console.log(courses);
-            alert("Course deleted succefully");
-            return;
-        }        
-    }
-    alert("Course not found.")    
-}
 //All these enable the code to work well with react. So yeah I replaced the button onclick with these.
 const addCourseButton=document.getElementById("addCourseButton");
 addCourseButton.addEventListener("click",addCourse);

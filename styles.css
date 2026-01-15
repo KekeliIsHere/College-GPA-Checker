@@ -94,6 +94,13 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .logo img {
+  width: clamp(30px, 6vw, 50px);   /* responsive size */
+  height: auto;  /* keep aspect ratio */
 }
 
 footer p {
