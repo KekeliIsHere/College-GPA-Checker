@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Checker</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="sidebar.js"></script>
 </head>
 <body>
     <header>
-        <div class="nav-links">
-            <a href="dashboard.html" class="nav-btn">Dashboard</a>
-            <a href="index.html" class="nav-btn active">General GPA</a>
-            <a href="ashesi-gpa.html" class="nav-btn">ASHESI GPA</a>
-        </div>
-    </header>  
+        <span onclick="openNav()"><img src="logos/three-dot.png" class="logo"></span>        
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="dashboard.html" class="nav-btn">Dashboard</a>
+        <a href="index.html" class="nav-btn active">General GPA</a>
+        <a href="ashesi-gpa.html" class="nav-btn">Ashesi GPA</a>
+        <a href="cgpa.html" class="nav-btn">Cummulative GPA</a>
+    </div> 
     <h1>Semester GPA Calculator </h1>
     <div id="main">
         <label for="courseName">Course Name:</label>
@@ -64,7 +68,8 @@
             <img src="logos/InBug-White.png" >
         </a>
     </footer>
-    <script src="main.js"></script>
+    <script src="gpa.js"></script>
+    
 </body>   
     
 </html>

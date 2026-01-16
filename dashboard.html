@@ -8,12 +8,15 @@
 </head>
 <body>
     <header>
-        <div class="nav-links">
-            <a href="dashboard.html" class="nav-btn active">Dashboard</a>
-            <a href="index.html" class="nav-btn">General GPA</a>
-            <a href="ashesi-gpa.html" class="nav-btn">ASHESI GPA</a>
-        </div>
+        <span onclick="openNav()"><img src="logos/three-dot.png" class="logo"></span>        
     </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="dashboard.html" class="nav-btn active">Dashboard</a>
+            <a href="gpa.html" class="nav-btn">General GPA</a>
+            <a href="ashesi-gpa.html" class="nav-btn">Ashesi GPA</a>
+            <a href="cgpa.html" class="nav-btn">Cummulative GPA</a>    
+    </div>
     
     <h1>GPA Calculator Dashboard</h1>
     
@@ -21,7 +24,7 @@
         <div class="dashboard-card">
             <h2>📊 Semester GPA Calculator</h2>
             <p>Calculate your GPA for any semester with a standard grading scale.</p>
-            <a href="index.html" class="card-button">Get Started</a>
+            <a href="gpa.html" class="card-button">Get Started</a>
         </div>
 
         <div class="dashboard-card">
@@ -29,6 +32,13 @@
             <p>Calculate your GPA using ASHESI's specific grading scale and requirements.</p>
             <a href="ashesi-gpa.html" class="card-button">Get Started</a>
         </div>
+
+        <div class="dashboard-card">
+            <h2>Cummulative GPA Calculator</h2>
+            <p>Calculate your Cummulative GPA</p>
+            <a href="cgpa.html" class="card-button">Get Started</a>
+        </div>
+
     </div>
 
     <footer>
@@ -40,5 +50,6 @@
             <img src="logos/InBug-White.png" alt="LinkedIn">
         </a>
     </footer>
+    <script src="sidebar.js"></script>
 </body>
 </html>
