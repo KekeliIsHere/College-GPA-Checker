@@ -18,9 +18,22 @@
             <a href="ashesi-gpa.html" class="nav-btn">Ashesi GPA</a>
             <a href="cgpa.html" class="nav-btn active">Cummulative GPA</a>    
     </div>
-    <h1>Cummulative GPA Calculator</h1>
+    <h1>Cumulative GPA Calculator</h1>
     <div id="main">
-        <p>Currently still in development.</p>
+        <label for="semesterName">Semester Name:</label>
+        <input type="text" id="semesterName" name="semesterName" placeholder="e.g., Fall 2023, Spring 2024">
+        
+        <label for="semesterGPA">Semester GPA (0.0-4.0):</label>
+        <input type="number" id="semesterGPA" name="semesterGPA" placeholder="Enter GPA" step="0.01" min="0" max="4.0">
+        
+        <label for="semesterCredits">Total Credits This Semester:</label>
+        <input type="number" id="semesterCredits" name="semesterCredits" placeholder="Enter total credits" step="0.5" min="0">
+        
+        <button id="addSemesterButton">Add Semester</button>
+        
+        <div id="semesterDetails"></div>
+        
+        <div id="cgpa"></div>
     </div>
     <footer>
         <a href="https://github.com/KekeliIsHere" class="logo" target="_blank">
@@ -31,5 +44,6 @@
             <img src="logos/InBug-White.png" >
         </a>
     </footer>
+    <script src="cgpa.js"></script>
     
 </body>
