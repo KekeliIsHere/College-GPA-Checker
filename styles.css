@@ -7,27 +7,49 @@
   padding: 0;
 }
 
+/* Color Variables */
+:root {
+  --bg-primary: #252526;
+  --bg-secondary: #60584a;
+  --bg-tertiary: #90a084;
+  --bg-card: ##90a084;
+  --bg-input: #1a1a1a;
+  --bg-hover: #2a2a2a;
+  
+  --text-primary: #eeeef1;
+  --text-secondary: #60584a;
+  --text-tertiary: #90a084;
+  
+  --gray-light: #4a4a4a;
+  --gray-medium: #3a3a3a;
+  --gray-dark: #2a2a2a;
+}
+
 /* Body styling*/
 body {
-  background-color: #2D3748;
-  font-family: system-ui, sans-serif;
+  background: #252526;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  color: #dae3f1;
+  color: var(--text-primary);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* start stacking from top */
+  justify-content: flex-start;
   padding: 1rem;
   padding-bottom: 10rem;
+  position: relative;
 }
 
 /* Header styling */
 header {
   width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 100;
 }
 
 /* Navigation links */
@@ -40,90 +62,151 @@ header {
 
 .nav-btn {
   padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
-  /* background-color: #4a5a75; */
-  color:#dae3f1;
+  color: var(--text-primary);
   text-decoration: none;
   border-radius: 4px;
   font-size: clamp(0.85rem, 3vw, 1rem);
-  transition: background-color 0.3s ease;
-  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  border: none;
+  font-weight: 500;
 }
 
 .nav-btn:hover {
-  background-color: #5a6a85;
-
+  background: var(--gray-dark);
+  color: var(--text-primary);
 }
 
 .nav-btn.active {
-  
-  color:white;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--text-primary);
 }
 
 header span img {
-  width: clamp(30px, 6vw, 50px);   /* responsive size */
-  height: auto;  /* keep aspect ratio */
+  width: clamp(30px, 6vw, 50px);
+  height: auto;
 }
-
-
 
 /* Main container */
 #main {
-  background-color: #363f50;
-  color: #dae3f1;
-  padding: clamp(1rem, 5vw, 2rem);
   width: 100%;
-  max-width: 500px;
-  
-  border-radius: 8px;
-
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; 
-  justify-content: space-between;
-  align-items: center;
-  gap: clamp(0.75rem, 3vw, 1.5rem); /* responsive gap */
+  gap: 3rem;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+}
+
+/* Dashboard Hero Section */
+.dashboard-hero {
+  text-align: center;
+  padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--text-tertiary);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
 }
 
 /* Dashboard cards */
 .dashboard-card {
-  background-color: #2D3748;
-  padding: clamp(1.5rem, 5vw, 2rem);
+  background: var(--bg-card);
+  border: 1px solid var(--gray-medium);
+  padding: 2rem;
   border-radius: 8px;
   text-align: center;
   flex: 1;
-  min-width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background: var(--bg-hover);
+  border-color: var(--gray-light);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover .card-icon {
+  transform: scale(1.1);
 }
 
 .dashboard-card h2 {
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .dashboard-card p {
-  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-size: 0.95rem;
   margin-bottom: 1.5rem;
-  color: #cbd5e0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-button {
   display: inline-block;
-  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 4vw, 2rem);
-  background-color: #2196F3;
-  color: white;
+  padding: 0.75rem 2rem;
+  background: var(--gray-light);
+  color: var(--text-primary);
   text-decoration: none;
   border-radius: 4px;
-  font-size: clamp(0.9rem, 3vw, 1rem);
-  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
 
 .card-button:hover {
-  background-color: #1976D2;
+  background: var(--gray-medium);
+  transform: translateY(-2px);
+}
+
+.card-button:active {
+  transform: translateY(0);
 }
 
 /* Headings inside main */
@@ -131,97 +214,158 @@ h1 {
   text-align: center;
   margin-bottom: 1rem;
   font-size: clamp(1.5rem, 6vw, 2.5rem);
+  color: var(--text-primary);
 }
 
 /* Inputs, selects, buttons styling */
 input,
 select,
-button {
+button:not(.card-button) {
   width: 100%;
-  padding: clamp(0.5rem, 3vw, 0.75rem);
-  font-size: clamp(0.9rem, 4vw, 1rem);
+  padding: 0.75rem;
+  font-size: 0.95rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-medium);
   outline: none;
-  
+  background: var(--bg-input);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
-/* Button hover effect (optional but nice) */
-button:hover {
-  background-color: #5a6a85;
-  color: white;
+input:focus,
+select:focus {
+  border-color: var(--gray-light);
+  background: var(--bg-hover);
+}
+
+/* Button hover effect */
+button:not(.card-button):hover {
+  background: var(--gray-light);
+  color: var(--text-primary);
   cursor: pointer;
+  border-color: var(--gray-light);
+  transform: translateY(-2px);
 }
 
 /* Footer styling */
 footer {  
   width: 100%;
   display: flex;
-  justify-content: center; /* center content horizontally */
-  padding: 1rem;
-  background-color: #363f50;
-  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   margin-top: 2rem;
   position: fixed;
   bottom: 0;
   left: 0;
-  display: flex;
-  justify-content: space-between;
+  border-top: 1px solid var(--gray-medium);
+  z-index: 50;
 }
 
 footer .logo img {
-  width: clamp(30px, 6vw, 50px);   /* responsive size */
-  height: auto;  /* keep aspect ratio */
+  width: clamp(30px, 6vw, 50px);
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+footer .logo:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 footer p {
-  font-size: clamp(0.75rem, 3vw, 1rem);
+  font-size: clamp(0.75rem, 3vw, 0.9rem);
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--text-secondary);
 }
 
 /* Mobile-friendly adjustments */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   body {
-    padding: 0.75rem;
-    padding-bottom: 9rem;
+    padding: 1rem;
+    padding-bottom: 8rem;
   }
   
   #main {
-    padding: clamp(1rem, 4vw, 1.5rem);
-    gap: clamp(0.5rem, 2.5vw, 1rem);
+    max-width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.75rem;
+    padding-bottom: 8rem;
   }
   
-  header .logo img {
+  #main {
+    gap: 2rem;
+  }
+
+  .dashboard-hero {
+    padding: 2rem 1rem;
+    margin-bottom: 0;
+  }
+  
+  header span img {
     width: clamp(25px, 5vw, 40px);
+  }
+
+  footer {
+    padding: 1rem 0.75rem;
+    font-size: 0.8rem;
   }
 }
 
 /* The side navigation menu */
 .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 999;
+  top: 0;
   left: 0;
-  background-color:#363f50;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background: var(--bg-tertiary);
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.3s ease;
+  border-right: 1px solid var(--gray-medium);
 }
 
 /* The navigation menu links */
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 12px 8px 12px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 1rem;
+  color: var(--text-secondary);
   display: block;
-  transition: 0.3s;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: var(--text-primary);
+  background-color: var(--gray-dark);
+  padding-left: 40px;
+}
+
+.sidenav a.active {
+  color: var(--text-primary);
+  border-left: 2px solid var(--text-primary);
+  padding-left: 30px;
+  background-color: var(--gray-dark);
 }
 
 /* Position and style the close button (top right corner) */
@@ -231,16 +375,28 @@ footer p {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sidenav .closebtn:hover {
+  color: var(--text-primary);
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left .5s;
-  padding: 20px;
+  transition: margin-left 0.3s ease;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    font-size: 0.9rem;
+  }
 }

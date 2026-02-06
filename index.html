@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <span onclick="openNav()"><img src="logos/three-dot.png" class="logo"></span>        
+        <span onclick="openNav()"><img src="logos/three-dot.png" class="logo"></span>
     </header>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -18,27 +18,36 @@
             <a href="cgpa.html" class="nav-btn">Cummulative GPA</a>    
     </div>
     
-    <h1>GPA Calculator Dashboard</h1>
-    
     <div id="main">
-        <div class="dashboard-card">
-            <h2>📊 Semester GPA Calculator</h2>
-            <p>Calculate your GPA for any semester with a standard grading scale.</p>
-            <a href="gpa.html" class="card-button">Get Started</a>
+        <div class="dashboard-hero">
+            <div class="hero-content">
+                <h1 class="hero-title">GPA Calculator Suite</h1>
+                <p class="hero-subtitle">Calculate your academic performance with precision</p>
+            </div>
         </div>
 
-        <div class="dashboard-card">
-            <h2>🎓 ASHESI GPA Calculator</h2>
-            <p>Calculate your GPA using Ashesi's specific grading scale and requirements. Comes complete wih all Ashesi Majors.</p>
-            <a href="ashesi-gpa.html" class="card-button">Get Started</a>
-        </div>
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-icon">📊</div>
+                <h2>Semester GPA</h2>
+                <p>Calculate your GPA for any semester with a standard grading scale.</p>
+                <a href="gpa.html" class="card-button">Get Started</a>
+            </div>
 
-        <div class="dashboard-card">
-            <h2>Cummulative GPA Calculator</h2>
-            <p>Calculate your Cummulative GPA</p>
-            <a href="cgpa.html" class="card-button">Get Started</a>
-        </div>
+            <div class="dashboard-card">
+                <div class="card-icon">🎓</div>
+                <h2>ASHESI GPA</h2>
+                <p>Calculate your GPA using Ashesi's specific grading scale and all majors.</p>
+                <a href="ashesi-gpa.html" class="card-button">Get Started</a>
+            </div>
 
+            <div class="dashboard-card">
+                <div class="card-icon">📈</div>
+                <h2>Cumulative GPA</h2>
+                <p>Track your cumulative GPA across multiple semesters and years.</p>
+                <a href="cgpa.html" class="card-button">Get Started</a>
+            </div>
+        </div>
     </div>
 
     <footer>
